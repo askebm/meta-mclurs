@@ -1,0 +1,21 @@
+From a9df29ce667d6394be36c765a4d734ade66a3188 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Aske=20B=C3=A6kdal=20M=C3=B8ller?= <askebm@live.dk>
+Date: Fri, 29 May 2020 16:08:32 +0200
+Subject: [PATCH] Fix so we can compile in crops
+
+---
+ runit-2.1.2/src/Makefile | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/runit-2.1.2/src/Makefile b/runit-2.1.2/src/Makefile
+index d9624de..840f142 100644
+--- a/runit-2.1.2/src/Makefile
++++ b/runit-2.1.2/src/Makefile
+@@ -234,7 +234,6 @@ hassgprm.h: choose compile hassgprm.h1 hassgprm.h2 load trysgprm.c
+ 
+ hasshsgr.h: chkshsgr choose compile hasshsgr.h1 hasshsgr.h2 load \
+ tryshsgr.c warn-shsgr
+-	./chkshsgr || ( cat warn-shsgr; exit 1 )
+ 	./choose clr tryshsgr hasshsgr.h1 hasshsgr.h2 > hasshsgr.h
+ 
+ haswaitp.h: choose compile haswaitp.h1 haswaitp.h2 load trywaitp.c
