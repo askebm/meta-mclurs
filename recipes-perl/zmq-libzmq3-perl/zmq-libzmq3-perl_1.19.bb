@@ -25,7 +25,11 @@ task-weaken-perl \
 zmq-constants-perl \
 zeromq \
 "
+export PERLLIB="${STAGING_DATADIR}/perl5:${STAGING_LIBDIR}/perl5:${S}"
+export ZMQ_H="${STAGING_INCDIR}/zmq.h"
+export ZMQ_INCLUDES="${STAGING_INCDIR}"
+export ZMQ_LIBS="${STAGING_LIBDIR}/libzmq.so"
 
-do_configure_prepend () {
-    export PERLLIB="${STAGING_DIR_HOST}/usr/share/perl5 $(perl -e 'print join(' ',@INC,"")')"
-}
+EXTRA_CPANFLAGS = "cc=${STAGING_BINDIR}/${BUILD_CC}"
+
+
